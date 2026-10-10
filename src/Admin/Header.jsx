@@ -56,7 +56,7 @@ function Header() {
       <nav className="navbar admin-navbar navbar-expand bg-white">
         <div className="container-fluid px-3 px-lg-4">
 
-          <button
+          {/* <button
             className="sidebar-toggle"
             type="button"
             onClick={() => {
@@ -64,7 +64,22 @@ function Header() {
             }}
           >
             <i className="bi bi-list"></i>
-          </button>
+          </button> */}
+                  <button
+  className="sidebar-toggle"
+  type="button"
+  onClick={() => {
+    if (window.innerWidth <= 991) {
+      // Mobile
+      document.body.classList.toggle("mobile-sidebar-open");
+    } else {
+      // Desktop
+      document.body.classList.toggle("sidebar-mini");
+    }
+  }}
+>
+  <i className="bi bi-list"></i>
+</button>
 
           <div className="navbar-actions ms-auto">
 

@@ -89,7 +89,7 @@ function Quotations() {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="activity-date-time">
                 {loading ? (
                   <tr>
                     <td colSpan="6" className="text-center py-4">
@@ -142,12 +142,15 @@ function Quotations() {
                       <td>
                         <button
                           type="button"
-                          className="btn btn-outline-primary btn-sm"
+                          className="btn text-primary btn-sm"
+                    style={{ boxShadow: "none", border: "none", outline: "none,",textDecoration: "underline"}}
+
+
                           onClick={() =>
                             handleViewRemark(item.sq_remark)
                           }
                         >
-                          <i className="bi bi-eye me-1"></i>
+                          <i className="bi bi-eye me-1 query-icon"></i>
                           View Remark
                         </button>
                       </td>

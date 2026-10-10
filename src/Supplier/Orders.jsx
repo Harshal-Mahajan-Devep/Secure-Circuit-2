@@ -364,7 +364,7 @@ function Orders() {
                   <th>Activity</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="activity-date-time">
                 {loading ? (
                   <TableLoader rows={6} columns={5} />
                 ) : orderData.length > 0 ? (
@@ -388,7 +388,8 @@ function Orders() {
                               }
                             >
                               <button
-                                className="btn btn-sm btn-outline-primary"
+                                className="btn btn-sm text-primary no-shadow text-decoration-underline query "
+                                
                                 onClick={() => {
                                   setSelectedOrder(order);
                                   setShowQueryModal(true);
@@ -396,30 +397,34 @@ function Orders() {
                                   markSupplierRead(order.order_id);
                                 }}
                                 disabled={Number(order.order_stage) <= 7}
-                                style={Number(order.order_stage) <= 7 ? { pointerEvents: "none" } : {}}
+                                style={Number(order.order_stage) <= 7 ? { pointerEvents: "none", } : {}  }
                               >
-                                <i className="fa-regular fa-circle-question"></i> Query
+                                <i className="fa-regular fa-circle-question query-icon"></i> Query
                               </button>
                             </span>
                           )}
 
                           {String(order.order_stage) <= 4 && !order.has_supplier_quote && (
                             <button
-                              className="btn btn-sm btn-outline-primary"
+                              className="btn btn-sm text-primary "
                               onClick={() => handleOpenQuoteModal(order)}
+                              style={{ boxShadow: "none", border: "none",transform: "none", outline: "none",textDecoration: "underline"}}
+
                             >
-                              <i className="fa-solid fa-upload"></i> Upload Quote
+                              <i className="fa-solid fa-upload query-icon"></i> Upload Quote
                             </button>
                           )}
 
                           {order.order_quality_repo && order.order_stage >= "12" && (
                             <a
-                              className="btn btn-sm btn-outline-primary ms-2 mt-2"
+                              className="btn btn-sm text-primary ms-2 mt-2"
                               href={`${BASE_URL}public/Uploads/${order.order_quality_repo}`}
                               target="_blank"
                               rel="noreferrer"
+                              style={{ boxShadow: "none",transform: "none", border: "none", outline: "none",textDecoration: "underline"}}
+
                             >
-                              <i className="bi bi-eye me-1"></i>
+                              <i className="bi bi-eye me-1 query-icon"></i>
                               Quality
                             </a>
                           )}
@@ -444,7 +449,9 @@ function Orders() {
 
                       <td className="text-center">
                         <button
-                          className="btn btn-outline-primary btn-sm"
+                          className="btn text-primary btn-sm"
+                          style={{ boxShadow: "none",transform: "none", border: "none", outline: "none,",textDecoration: "underline"}}
+
                           onClick={() => {
                             setSelectedOrder(order);
                             setShowStageDrawer(true);
@@ -457,7 +464,7 @@ function Orders() {
                         // }
                         // style={{ pointerEvents: "auto" }}
                         >
-                          <i className="fas fa-route me-2"></i>
+                          <i className="fas fa-route me-2 query-icon"></i>
                           Tracking
                         </button>
                       </td>
@@ -779,7 +786,7 @@ function Orders() {
                         <th>Gerber Preview</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="activity-date-time">
                       {cartItems.map((item, index) => (
                         <React.Fragment key={item.cart_id || index}>
 

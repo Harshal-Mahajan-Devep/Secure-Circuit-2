@@ -126,7 +126,7 @@ function Delivered() {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="activity-date-time">
 
                 {/* LOADING */}
                 {loading && (
@@ -197,9 +197,11 @@ function Delivered() {
                                 href={`${BASE_URL}public/Uploads/${item.delivery_proof}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-sm btn-outline-success"
+                                className="btn btn-sm text-success"
+                                style={{ boxShadow: "none", border: "none",transform: "none", outline: "none", textDecoration: "underline"}}
+
                               >
-                                <i className="bi bi-eye me-1"></i>
+                                <i className="bi bi-eye me-1 query-icon"></i>
                                 Delivery Proof
                               </a>
                             </div>

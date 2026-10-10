@@ -342,7 +342,7 @@ function Staff() {
                   <th>Activity Detail</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="activity-date-time">
                 {loading ? (
                   <TableLoader rows={6} columns={4} />
                 ) : staffData.length > 0 ? (

@@ -14,7 +14,8 @@ import toast from "react-hot-toast";
 import { Link, useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import * as Icons from "lucide-react";
-import { Offcanvas } from "bootstrap";
+// import { Offcanvas } from "bootstrap";
+
 
 export default function Header() {
     const customer = JSON.parse(localStorage.getItem("customer"));
@@ -23,6 +24,7 @@ export default function Header() {
     const [showCertificate, setShowCertificate] = useState(false);
     const [info, setInfo] = useState({});
     const [serviceOpen, setServiceOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         AOS.init({
@@ -53,29 +55,33 @@ export default function Header() {
     };
 
 
+    // const closeMobileMenu = () => {
+    //     const offcanvasElement = document.getElementById("mobileMenu");
+
+    //     if (offcanvasElement) {
+    //         const bsOffcanvas =
+    //             Offcanvas.getInstance(offcanvasElement) ||
+    //             new Offcanvas(offcanvasElement);
+
+    //         bsOffcanvas.hide();
+
+    //         setTimeout(() => {
+    //             document.body.classList.remove("offcanvas-backdrop");
+    //             document.body.style.overflow = "";
+    //             document.body.style.paddingRight = "";
+
+    //             document    
+    //                 .querySelectorAll(".offcanvas-backdrop")
+    //                 .forEach((el) => el.remove());
+    //         }, 300);
+    //     }
+    // };
+
+
     const closeMobileMenu = () => {
-        const offcanvasElement = document.getElementById("mobileMenu");
-
-        if (offcanvasElement) {
-            const bsOffcanvas =
-                Offcanvas.getInstance(offcanvasElement) ||
-                new Offcanvas(offcanvasElement);
-
-            bsOffcanvas.hide();
-
-            // Remove backdrop after close
-            setTimeout(() => {
-                document.body.classList.remove("offcanvas-backdrop");
-                document.body.style.overflow = "";
-                document.body.style.paddingRight = "";
-
-                document
-                    .querySelectorAll(".offcanvas-backdrop")
-                    .forEach((el) => el.remove());
-            }, 300);
-        }
-    };
-
+    setMobileMenuOpen(false);
+    setServiceOpen(false);
+};
     return (
         <>
             <section className="top-strip d-none d-lg-block">
@@ -284,14 +290,21 @@ export default function Header() {
                             <img src="assets/images/home-logo.png" alt="Logo" />
                         </a>
 
-                        <button
+                        {/* <button
                             className="navbar-toggler border-0 shadow-none ms-auto nav-menu-icon"
                             type="button"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#mobileMenu"
                         >
                             <Icons.Logs size={28} />
-                        </button>
+                        </button> */}
+                        <button
+    className="navbar-toggler border-0 shadow-none ms-auto nav-menu-icon"
+    type="button"
+    onClick={() => setMobileMenuOpen(true)}
+>
+    <Icons.Logs size={28} />
+</button>
 
                         <div className="collapse navbar-collapse justify-content-center d-none d-lg-flex">
                             <ul className="navbar-nav">
@@ -418,16 +431,32 @@ export default function Header() {
                 </div >
             </section >
 
-            <div className="offcanvas offcanvas-start" tabIndex="-1" id="mobileMenu">
-                <div className="offcanvas-header">
+            {/* <div className="offcanvas offcanvas-start mobile-offcanvas" tabIndex="-1" id="mobileMenu"> */}
+            <div
+    className={`offcanvas offcanvas-start mobile-offcanvas ${
+        mobileMenuOpen ? "show" : ""
+    }`}
+    tabIndex="-1"
+    id="mobileMenu"
+    style={{
+        visibility: mobileMenuOpen ? "visible" : "hidden"
+    }}
+>
+                <div className="offcanvas-header" style={{ backgroundColor: "red" }}>
                     <img src="assets/images/nav-logo.png" width="100" alt="Logo" />
 
-                    <button
+                    {/* <button
                         type="button"
                         className="btn-close text-light"
                         data-bs-dismiss="offcanvas"
                         aria-label="Close"
-                    ></button>
+                    ></button> */}
+                    <button
+    type="button"
+    className="btn-close"
+    onClick={closeMobileMenu}
+    aria-label="Close"
+></button>
                 </div>
 
                 <div className="offcanvas-body">
@@ -447,7 +476,7 @@ export default function Header() {
                                 <span>Services</span>
                                 <span>{serviceOpen ? "−" : "+"}</span>
                             </div>
-
+                                        
                             <ul className={`mobile-submenu ${serviceOpen ? "show" : ""}`}>
                                 <li>
                                     <Link to="/services/pcb-supplier" onClick={closeMobileMenu}>

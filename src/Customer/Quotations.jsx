@@ -148,7 +148,7 @@ function Quotations() {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="activity-date-time">
                 {loading ? (
                   <tr>
                     <td colSpan="5" className="text-center py-4">
@@ -174,12 +174,14 @@ function Quotations() {
                       className="text-center"
                     >
                       <td>
-                        <button
-                          className="btn btn-sm btn-outline-success"
+                        <a href="#"
+                          className="btn btn-sm text-success"
+                          style={{ boxShadow: "none", border: "none", transform: "none",outline: "none",textDecoration: "underline"}}
+
                           onClick={() => handleOpenModal(item)}
                         >
                           Approve
-                        </button>
+                        </a>  
                       </td>
 
                       <td className="fw-semibold">
@@ -205,7 +207,9 @@ function Quotations() {
                         {item.order_remark &&
                           item.order_remark !== "N/A" ? (
                           <button
-                            className="btn btn-sm btn-outline-success"
+                            className="btn btn-sm text-success"
+                            style={{ boxShadow: "none", border: "none",transform: "none", outline: "none",textDecoration: "underline"}}
+
                             onClick={() =>
                               handleOpenRemarkModal(item.order_remark)
                             }

@@ -165,6 +165,16 @@ export default function Home() {
               </p>
 
               <div className="hero-stats">
+  <div className="hero-stat">
+                  <div className="hero-icon">
+                    <Icons.BadgeCheck  size={30} strokeWidth={1} />
+                  </div>
+
+                  <div>
+                    <h3>20+</h3>
+                    <p>Years of Experience</p>
+                  </div>
+                </div>  
 
                 <div className="hero-stat">
                   <div className="hero-icon">
@@ -173,11 +183,11 @@ export default function Home() {
 
                   <div>
                     <h3>500+</h3>
-                    <p>Happy Customers</p>
+                    <p>Satisfied Customers</p>
                   </div>
                 </div>
 
-                <div className="hero-stat">
+                {/* <div className="hero-stat">
                   <div className="hero-icon">
                     <Icons.BadgeCheck size={42} strokeWidth={1} />
                   </div>
@@ -186,7 +196,7 @@ export default function Home() {
                     <h3>10+</h3>
                     <p>Years Experience</p>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="hero-stat">
                   <div className="hero-icon">
@@ -207,6 +217,16 @@ export default function Home() {
                   <div>
                     <h3>99%</h3>
                     <p>On-Time Delivery</p>
+                  </div>
+                </div>
+                   <div className="hero-stat quick-response-stat">
+                  <div className="hero-icon">
+                    <Icons.Headphones  size={30} strokeWidth={1} />
+                  </div>
+
+                  <div>
+                    <h3>24/7</h3>
+                    <p>Quick Response Support</p>
                   </div>
                 </div>
 

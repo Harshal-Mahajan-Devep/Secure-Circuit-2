@@ -480,7 +480,9 @@ function Approved() {
                         {String(item.order_stage) === "8" && (
                           <button
                             type="button"
-                            className="btn border-danger text-danger"
+                            className="btn  text-danger"
+                            style={{ boxShadow: "none",transform: "none", textDecoration: "underline", border: "none", outline: "none"}}
+
                             onClick={() => handleOpenAssignModal(item)}
                           >
                             Assign Supplier
@@ -547,7 +549,9 @@ function Approved() {
                         <div className="d-flex align-items-center justify-content-center flex-nowrap gap-1">
                           <button
                             type="button"
-                            className="btn btn-outline-danger btn-sm"
+                            className="btn text-danger btn-sm"
+                            style={{ boxShadow: "none",transform: "none", textDecoration: "underline", border: "none", outline: "none"}}
+
                             onClick={() =>
                               handleOpenRemarkModal(
                                 item.order_remark
@@ -555,7 +559,7 @@ function Approved() {
                             }
                           >
 
-                            <i className="bi bi-eye me-1"></i>
+                            <i className="bi bi-eye me-1 query-icon"></i>
 
                             Remark
 
@@ -564,7 +568,9 @@ function Approved() {
                           {Number(item.order_stage) >= 9 && (
                             <button
                               type="button"
-                              className="btn btn-outline-danger btn-sm"
+                              className="btn text-danger btn-sm"
+                              
+style={{ boxShadow: "none", border: "none",transform: "none", textDecoration: "underline", outline: "none"}}
                               onClick={() =>
                                 handleOpenRemarkModal(
                                   item.assigned_remark
@@ -572,7 +578,7 @@ function Approved() {
                               }
                             >
 
-                              <i className="bi bi-eye me-1"></i>
+                              <i className="bi bi-eye me-1 query-icon"></i>
 
                               Secure Team Remark
 

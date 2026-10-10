@@ -712,8 +712,14 @@ function Orders() {
                           <td className="text-center">
                             <div className="d-flex align-items-center justify-content-center flex-nowrap gap-1">
                               {String(order.order_stage) <= 8 && (
-                                <button
-                                  className="btn btn-sm btn-outline-danger"
+                                <a href="#"
+                                  className="btn btn-sm text-danger"style={{
+                                      boxShadow: "none",
+                                      border: "none",
+                                       textDecoration: "underline",
+                                       transform: "none",
+                                      outline: "none"
+                                    }}
                                   onClick={() => {
                                     setSelectedOrderId(order.order_id);
                                     setSelectedSuppliers(
@@ -728,7 +734,7 @@ function Orders() {
                                 >
                                   <i className="bi bi-building me-1 query-icon"></i>
                                   RFQ
-                                </button>
+                                </a>
                               )}
 
                               {String(order.order_stage) >= 8 && String(order.order_stage) <= 11 && (
@@ -743,7 +749,9 @@ function Orders() {
                                     }
                                   >
                                     <button
-                                      className="btn btn-sm btn-outline-danger"
+                                      className="btn btn-sm text-danger"
+                                      style={{ boxShadow: "none",transform: "none", border: "none",  textDecoration: "underline", outline: "none"}}
+
                                       onClick={() => {
                                         setSelectedOrder(order);
                                         setShowQueryModal(true);
@@ -775,13 +783,15 @@ function Orders() {
 
 
                               {String(order.order_stage) === "4" && (
-                                <button
-                                  className="btn btn-sm btn-outline-danger  "
+                                <a href="#"
+                                  className="btn btn-sm text-danger  "
+                                  style={{ boxShadow: "none",transform: "none",  textDecoration: "underline", border: "none", outline: "none"}}
+
                                   onClick={() => handleOpenQuoteModal(order)}
                                 >
                                   <i className={`fa-solid ${order.order_quotation ? "fa-pen-to-square query-icon  " : "fa-upload query-icon"} me-1`}></i>
                                   {order.order_quotation ? "Edit Quote" : "Upload Quote"}
-                                </button>
+                                </a>
                               )}
 
                               {String(order.order_stage) === "12" && (
@@ -934,7 +944,13 @@ function Orders() {
                           {["1", "2", "3"].includes(adminrole) && (
                             <td className="text-center">
                               <button
-                                className="btn btn-outline-danger btn-sm"
+                                className="btn text-danger btn-sm"style={{
+                                      boxShadow: "none",
+                                      border: "none",
+                                       textDecoration: "underline",
+                                      outline: "none",
+                                      transform: "none",
+                                    }}
                                 onClick={() => {
                                   setSelectedOrder(order);
                                   setShowStageDrawer(true);

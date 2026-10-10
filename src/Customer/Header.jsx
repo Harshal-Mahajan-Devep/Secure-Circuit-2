@@ -26,9 +26,28 @@ function Header() {
     localStorage.setItem("theme", "light");
   }, []);
 
-  const handleLogout = () => {
+  // const handleLogout = () => {
+  //   localStorage.removeItem("customer");
+  //   navigate("/");
+  // };
+    const handleLogout = () => {
     localStorage.removeItem("customer");
     navigate("/");
+  };
+
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+
+    setTheme(newTheme);
+
+    document.documentElement.setAttribute("data-theme", newTheme);
+    document.documentElement.setAttribute("data-bs-theme", newTheme);
+
+    localStorage.setItem("theme", newTheme);
+
+    window.dispatchEvent(new Event("themeChanged"));
   };
 
   return (
@@ -36,18 +55,30 @@ function Header() {
       <nav className="navbar admin-navbar navbar-expand bg-white">
         <div className="container-fluid px-3 px-lg-4">
 
-          <button
-            className="sidebar-toggle"
-            type="button"
-            onClick={() => {
-              document.body.classList.toggle("sidebar-mini");
-            }}
-          >
-            <i className="bi bi-list"></i>
-          </button>
-
+                       <button
+  className="sidebar-toggle"
+  type="button"
+  onClick={() => {
+    if (window.innerWidth <= 991) {
+      document.body.classList.toggle("mobile-sidebar-open");
+    } else {
+      document.body.classList.toggle("sidebar-mini");
+    }
+  }}
+>
+  <i className="bi bi-list"></i>
+</button>
           <div className="navbar-actions ms-auto">
-
+ <button
+              className="icon-button theme-toggle"
+              type="button"
+              onClick={toggleTheme}
+            >
+              <i
+                className={`bi ${theme === "dark" ? "bi-sun" : "bi-moon-stars"
+                  }`}
+              ></i>
+            </button>
             {/* Notifications */}
             <div className="dropdown">
               <button

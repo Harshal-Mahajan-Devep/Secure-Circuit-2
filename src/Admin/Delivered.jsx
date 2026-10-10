@@ -90,9 +90,12 @@ function Delivered() {
           href={`${BASE_URL}public/Uploads/${file}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-sm btn-outline-danger"
+          className="btn btn-sm text-danger"
+          style={{ boxShadow: "none", border: "none",transform: "none", textDecoration: "underline", outline: "none"}}
+
         >
-          <i className="bi bi-box-arrow-up-right me-1"></i>
+          
+          <i className="bi bi-box-arrow-up-right me-1 query-icon"></i>
           {label}
         </a>
       </>
@@ -148,7 +151,7 @@ function Delivered() {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="activity-date-time">
 
                 {/* LOADING */}
                 {loading && (
@@ -270,7 +273,7 @@ function Delivered() {
                           </div>
 
                           {/* IN TRANSIT */}
-                          <div className="col-md-3">
+                          <div className="col-md-3 ">
                             {item.in_transit ? (
                               <DocumentButton
                                 label="In Transit"

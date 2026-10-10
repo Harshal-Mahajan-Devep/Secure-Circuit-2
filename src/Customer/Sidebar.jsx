@@ -105,13 +105,28 @@ function Sidebar() {
 
   return (
     <>
-      <div className="sidebar-backdrop" data-sidebar-close></div>
-
-      <aside
+      {/* <div className="sidebar-backdrop" data-sidebar-close></div> */}
+     <div
+  className="sidebar-backdrop"
+  onClick={() => {
+    document.body.classList.remove("mobile-sidebar-open");
+  }}
+></div>
+       <aside
         className="admin-sidebar"
         id="adminSidebar"
         aria-label="Main navigation"
       >
+          {/* Mobile Close Button */}
+    <button
+    type="button"
+    className="mobile-sidebar-close"
+    onClick={() => {
+      document.body.classList.remove("mobile-sidebar-open");
+    }}
+  >
+    <i className="bi bi-x-lg"></i>
+  </button>
         <div className="sidebar-header">
           <Link className="brand-mark" to="/customer/dashboard">
             <span>
@@ -150,13 +165,25 @@ function Sidebar() {
             })
             .sort((a, b) => Number(a.menu_order) - Number(b.menu_order))
             .map((menu) => (
-              <NavLink
-                key={menu.menu_id}
-                to={`/customer/${menu.menu_routes}`}
-                className={({ isActive }) =>
-                  isActive ? "nav-link active-success" : "nav-link"
-                }
-              >
+              // <NavLink
+              //   key={menu.menu_id}
+              //   to={`/customer/${menu.menu_routes}`}
+              //   className={({ isActive }) =>
+              //     isActive ? "nav-link active-success" : "nav-link"
+              //   }
+              // >
+               <NavLink
+  key={menu.menu_id}
+  to={`/customer/${menu.menu_routes}`}
+  onClick={() => {
+    if (window.innerWidth <= 991) {
+      document.body.classList.remove("mobile-sidebar-open");
+    }
+  }}
+  className={({ isActive }) =>
+    isActive ? "nav-link active-success" : "nav-link"
+  }
+>
                 <span className="nav-icon text-success">
                   <i className={menu.menu_icon}></i>
                 </span>

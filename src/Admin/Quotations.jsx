@@ -83,7 +83,7 @@ function Quotations() {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="activity-date-time">
                 {loading ? (
                   <tr>
                     <td colSpan="6" className="text-center py-4">
@@ -124,6 +124,7 @@ function Quotations() {
                           style={{
                             cursor: "pointer",
                             fontSize: "16px",
+                            
                           }}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -136,12 +137,15 @@ function Quotations() {
                       <td>
                         <button
                           type="button"
-                          className="btn btn-outline-primary btn-sm"
+                          style={{ boxShadow: "none",transform: "none", textDecoration: "underline", border: "none", outline: "none"}}
+
+                          className="btn text-primary btn-sm"
+                          
                           onClick={() =>
                             handleViewRemark(item.order_remark)
                           }
                         >
-                          <i className="bi bi-eye me-1"></i>
+                          <i className="bi bi-eye me-1 query-icon"></i>
                           View Remark
                         </button>
                       </td>

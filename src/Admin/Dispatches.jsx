@@ -400,7 +400,7 @@ function Dispatches() {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="activity-date-time">
 
                 {/* LOADING */}
                 {loading && (
@@ -457,12 +457,14 @@ function Dispatches() {
                         {String(item.order_stage) === "13" && (
                           <button
                             type="button"
-                            className="btn btn-sm btn-outline-danger"
+                            className="btn btn-sm text-danger"
+                            style={{ boxShadow: "none", transform: "none",textDecoration: "underline", border: "none", outline: "none"}}
+
                             onClick={() =>
                               openDeliveryProofModal(item)
                             }
                           >
-                            <i className="bi bi-upload me-1"></i>
+                            <i className="bi bi-upload me-1 query-icon"></i>
                             In Transit
                           </button>
                         )}
@@ -495,9 +497,11 @@ function Dispatches() {
                                 href={`${BASE_URL}public/Uploads/${item.dispatch_file}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-sm btn-outline-danger"
+                                className="btn btn-sm text-danger"
+                                style={{ boxShadow: "none", border: "none",transform: "none", textDecoration: "underline", outline: "none"}}
+
                               >
-                                <i className="bi bi-eye me-1"></i>
+                                <i className="bi bi-eye me-1 query-icon"></i>
                                 Dispatch File
                               </a>
                             </div>
@@ -514,14 +518,16 @@ function Dispatches() {
                                 href={`${BASE_URL}public/Uploads/${item.in_transit}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-sm btn-outline-danger"
+                                className="btn btn-sm text-danger"
+                                style={{ boxShadow: "none", border: "none",transform: "none", textDecoration: "underline", outline: "none"}}
+
                               >
-                                <i className="bi bi-eye me-1"></i>
+                                <i className="bi bi-eye me-1 query-icon"></i>
                                 In Transit
                               </a>
                             </div>
                           ) : (
-                            <span className="border  border-danger text-danger px-2 py-1 rounded small">
+                            <span className="  border-danger text-danger px-2 py-1 rounded small">
                               No In Transit File
                             </span>
                           )}
@@ -533,9 +539,9 @@ function Dispatches() {
                                 href={`${BASE_URL}public/Uploads/${item.delivery_proof}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-sm btn-outline-success"
+                                className="btn btn-sm text-success"
                               >
-                                <i className="bi bi-eye me-1"></i>
+                                <i className="bi bi-eye me-1 query-icon"></i>
                                 Delivery Proof
                               </a>
                             </div>

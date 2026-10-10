@@ -368,7 +368,7 @@ function Dispatches() {
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody className="activity-date-time">
 
                 {/* LOADING */}
                 {loading && (
@@ -484,14 +484,16 @@ function Dispatches() {
                                 href={`${BASE_URL}public/Uploads/${item.dispatch_file}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-sm btn-outline-primary"
+                                className="btn btn-sm text-primary"
+                                style={{ boxShadow: "none", border: "none",transform: "none", outline: "none",textDecoration: "underline",transform: "none",}}
+
                               >
                                 <i className="bi bi-eye me-1"></i>
                                Dispatch File
-                              </a>
+                              </a>  
                             </div>
                           ) : (
-                            <span className="border  border-primary text-primary px-2 py-1 rounded small">
+                            <span className="  text-primary px-2 py-1 rounded small" >
                               No Dispatch File
                             </span>
                           )}
@@ -503,9 +505,11 @@ function Dispatches() {
                                 href={`${BASE_URL}public/Uploads/${item.in_transit} `}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn btn-sm btn-outline-primary"
+                                className="btn btn-sm text-primary"
+                                style={{ boxShadow: "none", border: "none",transform: "none", outline: "none",textDecoration: "underline"}}
+
                               >
-                                <i className="bi bi-eye me-1"></i>
+                                <i className="bi bi-eye me-1 query-icon"></i>
                                 In Transit
                               </a>
                             )}

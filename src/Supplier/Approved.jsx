@@ -1723,7 +1723,8 @@ function Approved() {
 
                               type="button"
 
-                              className="btn btn-outline-primary btn-sm"
+                              className="btn text-primary btn-sm"
+style={{ boxShadow: "none", border: "none", outline: "none",textDecoration: "underline"}}
 
                               onClick={() =>
 
@@ -1737,7 +1738,7 @@ function Approved() {
 
                             >
 
-                              <i className="bi bi-eye me-1"></i>
+                              <i className="bi bi-eye me-1 query-icon"></i>
 
                               Remark
 
@@ -1757,7 +1758,8 @@ function Approved() {
 
                                   type="button"
 
-                                  className="btn btn-outline-primary btn-sm"
+                                  className="btn text-primary btn-sm"
+style={{ boxShadow: "none", border: "none", outline: "none",transform: "none",textDecoration: "underline"}}
 
                                   onClick={() =>
 
@@ -1771,7 +1773,7 @@ function Approved() {
 
                                 >
 
-                                  <i className="bi bi-eye me-1"></i>
+                                  <i className="bi bi-eye me-1 query-icon"></i>
 
                                   Secure Circuit
 

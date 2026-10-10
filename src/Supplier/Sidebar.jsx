@@ -64,7 +64,6 @@ function Sidebar() {
     if (!SuppId) return;
 
     try {
-      // Supplier Orders
       const ordersResponse = await axios.get(
         `${BASE_URL}supplier/getSupplierOrders/${SuppId}`
       );
@@ -80,7 +79,6 @@ function Sidebar() {
           .includes(String(SuppId));
       });
 
-      // Supplier Quotations
       const quotationsResponse = await axios.get(
         `${BASE_URL}supplier/getdatawhere/tbl_supplier_quotes/sq_supp_id/${SuppId}`
       );
@@ -91,7 +89,6 @@ function Sidebar() {
           : [quotationsResponse.data.data]
         : [];
 
-      // Approved Orders
       const approvedResponse = await axios.get(
         `${BASE_URL}supplier/getdatawhere/tbl_orders/assigned_supplier/${SuppId}`
       );
@@ -102,7 +99,6 @@ function Sidebar() {
           : [approvedResponse.data.data]
         : [];
 
-      // Only order_stage 8 to 12
       const approvedCount = approvedOrders.filter((item) => {
         const stage = Number(item.order_stage);
 
@@ -141,13 +137,35 @@ function Sidebar() {
 
   return (
     <>
-      <div className="sidebar-backdrop" data-sidebar-close></div>
+      {/* <div className="sidebar-backdrop" data-sidebar-close></div> */}
+      <div
+  className="sidebar-backdrop"
+  data-sidebar-close
+  onClick={() => {
+    document.body.classList.remove("mobile-sidebar-open");
+  }}
+></div>
 
-      <aside
+      {/* <aside
         className="admin-sidebar"
         id="adminSidebar"
         aria-label="Main navigation"
-      >
+      > */}
+                <aside
+  className="admin-sidebar"
+  id="adminSidebar"
+  aria-label="Main navigation"
+>
+    <button
+    type="button"
+    className="mobile-sidebar-close"
+    onClick={() => {
+      document.body.classList.remove("mobile-sidebar-open");
+    }}
+    aria-label="Close sidebar"
+  >
+    <i className="bi bi-x-lg"></i>
+  </button>
         <div className="sidebar-header">
           <Link className="brand-mark" to="/user-auth/dashboard">
             <span>
@@ -189,9 +207,21 @@ function Sidebar() {
             })
             .sort((a, b) => Number(a.menu_order) - Number(b.menu_order))
             .map((menu) => (
-              <NavLink
+              // <NavLink
+              //   key={menu.menu_id}
+              //   to={`/user-auth/${menu.menu_routes}`}
+              //   className={({ isActive }) =>
+              //     isActive ? "nav-link active-primary" : "nav-link"
+              //   }
+              // >
+               <NavLink
                 key={menu.menu_id}
                 to={`/user-auth/${menu.menu_routes}`}
+                  onClick={() => {
+    if (window.innerWidth <= 991) {
+      document.body.classList.remove("mobile-sidebar-open");
+    }
+  }}
                 className={({ isActive }) =>
                   isActive ? "nav-link active-primary" : "nav-link"
                 }

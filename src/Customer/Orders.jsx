@@ -543,7 +543,7 @@ function Orders() {
                   <th>Activity</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="activity-date-time">
                 {loading ? (
                   <TableLoader rows={6} columns={5} />
                 ) : orderData.length > 0 ? (
@@ -559,8 +559,16 @@ function Orders() {
 
                           {/* QUERY */}
                           <div className="position-relative">
-                            <button
-                              className="btn btn-sm btn-outline-success"
+                            <a href="#"
+                              className="btn btn-sm text-primary"style={{
+                              boxShadow: "none",
+                              border: "none",
+                              outline: "none",
+                              
+                              
+                            textDecoration: "underline"
+                            }}
+
                               onClick={() => {
                                 setSelectedOrder(order);
                                 setShowQueryModal(true);
@@ -569,8 +577,10 @@ function Orders() {
                               }}
                               disabled={Number(order.order_stage) <= 7}
                             >
-                              <i className="fa-regular fa-circle-question"></i> Query
-                            </button>
+                              <i className="fa-regular fa-circle-question query-icon"></i> Query
+                            </a>
+
+                            
 
                             {parseInt(order.unread_count) > 0 && (
                               <span
@@ -587,14 +597,15 @@ function Orders() {
                           </div>
                           {/* DELIVER - ONLY IN TRANSIT / STAGE 14 */}
                           {String(order.order_stage) === "14" && (
-                            <button
+                            <a href="#"
                               type="button"
-                              className="btn btn-outline-success btn-sm"
+                              className="btn text-success btn-sm"style={{ boxShadow: "none",
+                            textDecoration: "underline",  border: "none", outline: "none"}}
                               onClick={() => openDeliveryModal(order)}
                             >
                               <i className="fa-solid fa-truck-fast me-1"></i>
                               Deliver
-                            </button>
+                            </a>
                           )}
 
 
@@ -691,16 +702,20 @@ function Orders() {
                       </td>
 
                       <td className="text-center">
-                        <button
-                          className="btn btn-outline-success btn-sm"
-                          onClick={() => {
-                            setSelectedOrder(order);
-                            setShowStageDrawer(true);
-                          }}
-                        >
-                          <i className="fas fa-route me-2"></i>
-                          Tracking
-                        </button>
+                       <a
+                              href="#"
+                              className="btn btn-sm text-success" style={{ boxShadow: "none",transform: "none",transform: "none", transform: "none",textDecoration: "underline", border: "none", outline: "none",
+                             }}
+
+                              onClick={(e) => {
+                                e.preventDefault();
+                                setSelectedOrder(order);
+                                setShowStageDrawer(true);
+                              }}
+                            >
+                              <i className="fas fa-route me-2 query-icon"></i>
+                              Tracking
+                            </a>
                       </td>
 
                       <td className="text-start">
